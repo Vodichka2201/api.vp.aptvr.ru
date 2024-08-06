@@ -4,8 +4,9 @@
 
     export let data: PageData;
 </script>
-
-<h1>My Blog</h1>
+<div class="my-4">
+    <h1 class="text-center text-3xl font-bold">My wonderful blog</h1>
+</div>
   <div class="container mx-auto mt-4">
         {#each data.props.posts as post (post.id)}
         <div
@@ -17,6 +18,7 @@
       >
         <h4 class="font-bold">{post.title}</h4>
         <p class="mt-2 text-gray-800">{post.description}</p>
+        <p class="text-gray-500">By: {post.author}</p>
       </div>
         {/each}
     </div>

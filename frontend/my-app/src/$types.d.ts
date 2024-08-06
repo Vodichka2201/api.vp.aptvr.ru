@@ -1,6 +1,6 @@
 export type PostAttributes = {
     title: string;
-    description: string,
+    description: string;
     content: string;
     author: {
         data: {
