@@ -112,3 +112,8 @@ exports
 *.cache
 build
 .strapi-updater.json
+
+# Ignore CRLF line endings
+**/db/**
+# Ignore Unix socket fil
+db/mysql.sock

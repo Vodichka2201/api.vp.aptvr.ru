@@ -2,9 +2,11 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7"
+    "tailwindcss": "^3.4.7",
+    "vite": "^5.4.2"
   },
   "dependencies": {
-    "marked": "^13.0.3"
+    "marked": "^13.0.3",
+    "strapi-utils": "^3.6.11"
   }
 }

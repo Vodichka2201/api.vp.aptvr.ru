@@ -1,4 +1,17 @@
 import type { Load } from '@sveltejs/kit';
+import type { PageData}  from '$lib/types';
+
+export const load: Load = async({ params, fetch }) => {
+  const res = await fetch(`http://localhost:1337/posts/${params.id}`);
+  const post = await res.json();
+
+  
+  return { data: { post } } satisfies PageData;
+}
+
+
+
+/**import type { Load } from '@sveltejs/kit';
 import type { PageData } from '$lib/types';
 
 export const load: Load = async ({ params, fetch }) => {
@@ -11,3 +24,4 @@ export const load: Load = async ({ params, fetch }) => {
     return { data: { post } } satisfies PageData;
   }
 };
+ */

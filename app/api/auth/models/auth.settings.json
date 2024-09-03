@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "auths",
+  "info": {
+    "name": "Auth"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "password"
+    }
+  }
+}

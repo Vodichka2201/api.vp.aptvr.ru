@@ -18,7 +18,12 @@
       >
         <h4 class="font-bold">{post.title}</h4>
         <p class="mt-2 text-gray-800">{post.description}</p>
-        <p class="text-gray-500">By: {post.author}</p>
+        <p class="text-gray-500">
+        {#if post.author?.username}
+          By: {post.author.username}
+        {:else}
+          By: Unknown
+        {/if}</p>
       </div>
         {/each}
     </div>
