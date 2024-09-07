@@ -28,7 +28,7 @@
             return;
         }
 
-        if (data.data.post && editId) {
+        if (editId) {
             const res = await fetch(`http://localhost:1337/posts/${editId}`, {
                 method: 'PUT',
                 headers: {
