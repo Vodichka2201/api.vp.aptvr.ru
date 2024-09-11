@@ -88,19 +88,19 @@
 
     <form on:submit|preventDefault={createPost} class="my-4 mx-auto container p-4">
         <div class="my-1">
-            <label for="title">Title</label>
-            <input type="text" placeholder="Enter title" id="title" bind:value={title} />
+            <label for="title">Заголовок</label>
+            <input type="text" placeholder="Введите заголовок" id="title" bind:value={title} />
         </div>
         <div class="my-1">
-            <label for="description">Description</label>
-            <input type="text" placeholder="Enter description" id="description" bind:value={description} />
+            <label for="description">Описание</label>
+            <input type="text" placeholder="Введите описание" id="description" bind:value={description} />
         </div>
         <div class="my-1">
-            <label for="title">Content</label>
-            <textarea rows={5} placeholder="Enter content" id="content" bind:value={content} />
+            <label for="title">Содержание</label>
+            <textarea rows={5} placeholder="Введите содержание" id="content" bind:value={content} />
         </div>
         <div class="my-2">
-            <button class="submit" type="submit">Submit</button>
+            <button class="submit" type="submit">Опубликовать</button>
         </div>
     </form>
     <style lang="postcss">

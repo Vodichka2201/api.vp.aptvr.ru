@@ -5,7 +5,7 @@
     export let data: PageData;
 </script>
 <div class="my-4">
-    <h1 class="text-center text-3xl font-bold">My wonderful blog</h1>
+    <h1 class="text-center text-3xl font-bold">Статьи</h1>
 </div>
   <div class="container mx-auto mt-4">
         {#each data.props.posts as post (post.id)}

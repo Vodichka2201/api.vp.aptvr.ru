@@ -43,10 +43,10 @@
           <p class="my-2 flex justify-center items-center gap-3">
               <button
                   class="bg-blue-500 text-white font-bold py-2 px-4 rounded border-transparent"
-                  on:click={editPost}>Update post</button>
+                  on:click={editPost}>Обновить</button>
               <button
                   class="bg-red-500 text-white font-bold py-2 px-4 rounded border-transparent"
-                  on:click={deletePost}>Delete post</button>
+                  on:click={deletePost}>Удалить</button>
           </p>
       {/if}
       <div class="border border-gray-500 my-4 mx-8 p-6 rounded">
