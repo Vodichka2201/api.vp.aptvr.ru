@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "marked": "^13.0.3",
-    "strapi-utils": "^3.6.11"
+    "strapi-utils": "^3.6.11",
+    "swr": "^2.2.5"
   }
 }

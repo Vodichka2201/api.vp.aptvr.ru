@@ -6,7 +6,6 @@
     import { onMount } from 'svelte';
     import user from '$lib/user';
     import { goto } from '$app/navigation';
-    export let data: PageData;
     let editId: string;
     let title: string;
     let description: string;
@@ -58,11 +57,13 @@
             goto('/login');
             return;
         }
-
+        console.log(editId);
         if (editId) {
             await editPost();
             return;
         }
+
+        const author = $user?.id;
 
         const res = await fetch('http://localhost:1337/posts', {
             method: 'POST',
@@ -71,7 +72,7 @@
                 Accept: 'application/json',
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             },
-            body: JSON.stringify({ title, description, content })
+            body: JSON.stringify({ title, description, content, author })
         });
 
         if (!res.ok) {

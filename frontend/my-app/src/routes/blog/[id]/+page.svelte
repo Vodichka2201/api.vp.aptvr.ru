@@ -7,6 +7,10 @@
 
     let currentUser: User | null = null;
 
+    function goToPage(page: number) {
+    goto(`/post/${data.data.post.id}?page=${page}`);
+  }
+
     user.subscribe((u) => {
     currentUser = u;
   });

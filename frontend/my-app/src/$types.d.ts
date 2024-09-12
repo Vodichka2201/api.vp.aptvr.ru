@@ -14,6 +14,9 @@ export type Post = {
   export type PageData = {
     props: {
       posts: Post[];
+      start: number;
+      limit: number;
+      pageCount: number;
     };
   };
   

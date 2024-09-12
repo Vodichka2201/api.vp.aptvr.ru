@@ -16,7 +16,7 @@
             {#if !$user}
                 <a href="/login" class="font-mono no-underline">Вход</a>
             {:else}
-                <a href="/new" class="font-mono no-underline mr-3">Новый пост</a>
+                <a href="/new" class="font-mono no-underline mr-3">Новая статья</a>
                 <span class="font-mono text-gray-500">{$user.username}</span>
                 <form class="font-mono no-underline mr-3">
                       <button class="logout" on:click={logout}>Выход</button>
