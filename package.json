@@ -9,6 +9,7 @@
     "@tadashi/svelte-editor-quill": "^3.0.1",
     "@tinymce/tinymce-svelte": "^3.0.0",
     "marked": "^13.0.3",
+    "node-red-contrib-telegrambot": "^16.1.0",
     "strapi-utils": "^3.6.11",
     "swr": "^2.2.5",
     "tinymce": "^7.3.0"

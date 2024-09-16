@@ -23,7 +23,6 @@
               alert(data.message[0].messages[0].message);
           }
       }
-      console.log($user); console.log($user?.jwt);
   }
 </script>
 <form on:submit|preventDefault={login} class="container mx-auto my-4">

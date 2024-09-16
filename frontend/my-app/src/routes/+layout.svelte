@@ -5,6 +5,7 @@
         import Navbar from "$lib/Navbar.svelte";
         import type { User } from '$lib/types';
         import { onMount } from 'svelte';
+        import { afterUpdate } from 'svelte';
         let loading = true;
         onMount(async () => {
             // Check if 'token' exists in localStorage
@@ -21,6 +22,13 @@
             if (res.ok) {
                 $userStore = user;
             }
+        });
+        afterUpdate(async () => {
+            const res = await fetch('http://localhost:1880/online', {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            });
+
+
         });
     </script>
     

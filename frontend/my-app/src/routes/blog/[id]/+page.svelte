@@ -3,9 +3,28 @@
     import { goto } from '$app/navigation';
     import user from '$lib/user';
     import type { User } from '$lib/types';
+    import Editor from '@tinymce/tinymce-svelte';
+
     export let data: PageData;
 
     let currentUser: User | null = null;
+
+
+    let conf = {
+  height: 500,
+  menubar: false,
+  plugins: [
+    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
+    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+    'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
+  ],
+  toolbar: 'undo redo | blocks | ' +
+    'bold italic forecolor | alignleft aligncenter ' +
+    'alignright alignjustify | bullist numlist outdent indent | ' +
+    'removeformat | help',
+}
+
+
 
     function goToPage(page: number) {
     goto(`/post/${data.data.post.id}?page=${page}`);
@@ -38,6 +57,11 @@
                 }
             }
     }
+
+    function handleEditorChange(event: CustomEvent<any>) {
+  content = event.detail.content;
+}
+
   </script>
   
   <h1 class="text-center text-4xl mt-4">{data.data.post.title}</h1>
@@ -52,7 +76,16 @@
                   class="bg-red-500 text-white font-bold py-2 px-4 rounded border-transparent"
                   on:click={deletePost}>Удалить</button>
           </p>
+        <main>
+          <Editor
+            licenseKey='your-license-key'
+            scriptSrc='../../../../node_modules/tinymce/tinymce.min.js'
+            value={content}
+            {conf}
+            on:input={handleEditorChange}
+          />
+        </main>
       {/if}
       <div class="border border-gray-500 my-4 mx-8 p-6 rounded">
-          {@html content}
-      </div>
+        {@html content}
+    </div>

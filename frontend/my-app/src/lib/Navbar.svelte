@@ -11,7 +11,10 @@
 </script>
 <nav class="bg-white border-b border-gray-500 py-2 px-4 w-full">
     <div class="flex items-center justify-between container mx-auto">
-        <a href="/" class="font-bold no-underline">Статьи</a>
+        <section>
+            <a href="/" class="font-bold no-underline mx-6">Статьи</a>
+            <a href="/authreg" class="font-bold no-underline-4">Заявка в авторы</a>
+        </section>
            <section>
             {#if !$user}
                 <a href="/login" class="font-mono no-underline">Вход</a>
