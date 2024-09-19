@@ -6,6 +6,8 @@ export const load: Load = async ({ params, url, fetch }) => {
   const res = await fetch(`http://localhost:1337/posts/${params.id}`);
   const post = await res.json();
 
+
+
   return { data: { post } } satisfies PageData;
 };
 

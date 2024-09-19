@@ -3,6 +3,8 @@
     import { goto } from '$app/navigation';
 
     export let data: PageData;
+
+    
 </script>
 <div class="my-4">
   <h1 class="text-center text-3xl font-bold">Статьи</h1>

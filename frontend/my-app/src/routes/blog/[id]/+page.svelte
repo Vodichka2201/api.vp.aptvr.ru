@@ -24,8 +24,6 @@
     'removeformat | help',
 }
 
-
-
     function goToPage(page: number) {
     goto(`/post/${data.data.post.id}?page=${page}`);
   }
@@ -76,6 +74,7 @@
                   class="bg-red-500 text-white font-bold py-2 px-4 rounded border-transparent"
                   on:click={deletePost}>Удалить</button>
           </p>
+          
         <main>
           <Editor
             licenseKey='your-license-key'
