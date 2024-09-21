@@ -1,6 +1,8 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import user from '$lib/user';
+  import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
+
 
   async function logout() {
   localStorage.removeItem("token");
@@ -9,23 +11,27 @@
 }
 
 </script>
-<nav class="bg-white border-b border-gray-500 py-2 px-4 w-full">
-    <div class="flex items-center justify-between container mx-auto">
-        <section>
-            <a href="/" class="font-bold no-underline mx-6">Статьи</a>
-            <a href="/authreg" class="font-bold no-underline-4">Заявка в авторы</a>
-        </section>
-           <section>
-            {#if !$user}
-                <a href="/login" class="font-mono no-underline">Вход</a>
-            {:else}
-                <a href="/new" class="font-mono no-underline mr-3">Новая статья</a>
-                <span class="font-mono text-gray-500">{$user.username}</span>
-                <form class="font-mono no-underline mr-3">
-                      <button class="logout" on:click={logout}>Выход</button>
-                  </form>
-            {/if}
+<Navbar color="purple">
+    <NavBrand href="/">
+      <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Статьи</span>
+    </NavBrand>
+    <NavHamburger  />
+    <NavUl  >
+      {#if !$user}
+      <a href="/authreg" class="font-bold no-underline-4">Заявка в авторы</a>
+      <NavLi href="/login">Вход</NavLi>
+      {:else}
+      <NavLi> 
+        <form>
+            <button class="logout" on:click={logout}>Выход</button> 
+        </form>
+      </NavLi>
+      <NavLi href="/profile">
+        <span>{$user.username}</span>
+      </NavLi>
+      <NavLi href="/new">Новая статья</NavLi>
+      {/if}
+    </NavUl>
+  </Navbar>
 
-        </section>
-    </div>
- </nav>
+ 

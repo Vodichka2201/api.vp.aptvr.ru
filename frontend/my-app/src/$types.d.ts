@@ -19,4 +19,4 @@ export type Post = {
       pageCount: number;
     };
   };
-  
+

@@ -25,9 +25,11 @@ export type PageData = {
   };
 };
 
+
 export interface User {
   id: string;
   username: string;
   email: string;
   jwt: string;
 }
+
