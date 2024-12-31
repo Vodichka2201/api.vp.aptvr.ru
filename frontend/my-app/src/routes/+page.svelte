@@ -1,19 +1,36 @@
 <script lang="ts">
-    import type { PageData } from '../$types';
+    import type { AuthData, PageData } from '../$types';
 
     import { goto } from '$app/navigation';
     import { Tabs, TabItem } from 'flowbite-svelte';
 
     export let data: PageData;
-
     
+    let activeTab = 0;
+    type UniqueAuthors = {
+      [email: string]: string;
+    }
+    const uniqueAuthors: UniqueAuthors = {};
+
+    data.props.posts.forEach(post => {
+      if(post.author) {
+        uniqueAuthors[post.author.id] = post.author.username;
+      }
+    })
+    const authorsArray = Object.entries(uniqueAuthors)
+
+
+    function switchTab(index: number) {
+      activeTab = index;
+    }
+
 </script>
 <div class="my-4">
   <h1 class="text-center text-3xl font-bold">Статьи</h1>
 </div>
 <Tabs tabStyle="full" defaultClass="flex rounded-lg divide-x rtl:divide-x-reverse divide-gray-200 shadow dark:divide-gray-700">
-  <TabItem class="w-full" open>
-    <span slot="title">Статьи</span>
+  <TabItem class="w-full" open={activeTab === 0}>
+    <button slot="title" on:click={() => switchTab(0)}>Статьи</button>
     <div class="container mx-auto mt-4">
       {#each data.props.posts as post (post.id)}
         <div
@@ -70,5 +87,55 @@
     </div>
     
     </div>
+  </TabItem>
+  <TabItem class="w-full" open={activeTab === 1}>
+    <button slot="title" on:click={() => switchTab(1)}>Авторы</button>
+    <div class="container mx-auto mt-4">
+        {#each authorsArray as [id, username]}
+    <div
+      class="hover:bg-gray-200 cursor-pointer px-6 py-2 border-b border-gray-500"
+      on:click={() => goto('/auths/' + id)} 
+      on:keydown={(event) => event.key === 'Enter' && goto('/auths/' + id)}
+      role="button"
+      tabindex="0"
+    >
+    <h4 class="font-bold">{username} ({id})</h4>
+    </div>
+  {/each}
+    </div>
+    
+    <div class="container mx-auto mt-4 flex flex-col items-center">
+    
+      <div class="flex flex-col items-center">
+        <!-- Help text -->
+        <span class="text-sm text-gray-700 dark:text-gray-400">
+          С <span class="font-semibold text-gray-900 dark:text-white">{data.props.start}</span> по <span class="font-semibold text-gray-900 dark:text-white">{data.props.start + data.props.limit}</span>
+      </span>
+        <div class="inline-flex mt-2 xs:mt-0">
+          <!-- Buttons -->
+           {#if data.props.start > 0}
+          <a href="?_start={data.props.start - data.props.limit}&_limit={data.props.limit}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+              </svg>
+              Назад
+            </a>
+            {:else}
+            <a href="/" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+              </svg>
+              Назад
+            </a>
+            {/if}
+          <a href="?_start={data.props.start + data.props.limit}&_limit={data.props.limit}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              Вперёд
+              <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
   </TabItem>
 </Tabs>

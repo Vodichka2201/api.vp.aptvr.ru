@@ -25,6 +25,19 @@ export type PageData = {
   };
 };
 
+export type Auth = {
+  id: number;
+  email: string;
+  description: string;
+  username: string;
+}
+
+export type AuthData = {
+  data: {
+    auth: Auth;
+  }
+}
+
 
 export interface User {
   id: string;

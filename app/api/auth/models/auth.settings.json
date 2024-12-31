@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "auths",
   "info": {
-    "name": "Auth"
+    "name": "Auth",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,6 +17,9 @@
     },
     "password": {
       "type": "password"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
